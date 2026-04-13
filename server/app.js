@@ -2,7 +2,6 @@
 const { nanoid } = require("nanoid");
 const bcrypt = require("bcrypt");
 
-// Подключаем Swagger
 const swaggerJsdoc = require("swagger-jsdoc");
 const swaggerUi = require("swagger-ui-express");
 
@@ -100,18 +99,13 @@ function findUserByEmailOr404(email, res) {
     return user;
 }
 
-// Хеширование пароля
+// хеширование пароля
 async function hashPassword(password) {
     const rounds = 10;
     return bcrypt.hash(password, rounds);
 }
 
-// Проверка пароля
-async function verifyPassword(password, passwordHash) {
-    return bcrypt.compare(password, passwordHash);
-}
-
-// Валидация товара
+// валидация товара
 function validateProductPayload(body) {
     const { title, category, description, price } = body;
 
@@ -198,7 +192,7 @@ const swaggerOptions = {
 const swaggerSpec = swaggerJsdoc(swaggerOptions);
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
-// Логирование запросов
+// логирование запросов
 app.use((req, res, next) => {
     res.on("finish", () => {
         console.log(`[${new Date().toISOString()}] [${req.method}] ${res.statusCode} ${req.path}`);
