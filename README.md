@@ -49,3 +49,6 @@
   ![1.png](readme_images/11/1.png)
 - Админ создает товар
   ![2.png](readme_images/11/2.png)
+
+
+  ![3.png](readme_images/11/3.png)
